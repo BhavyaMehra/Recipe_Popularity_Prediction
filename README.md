@@ -1,7 +1,8 @@
 # Recipe Popularity Prediction
 
 ## Overview
-This project analyzes and predicts the popularity of recipes based on various features. The focus is on showcasing data science skills, including data preprocessing, feature engineering, exploratory data analysis, and machine learning modeling.
+This project explores the factors that drive recipe popularity on a website and aims to build a model that predicts whether a recipe will attract high or low traffic. The goal is to achieve at least **80% precision** in predicting recipe popularity while uncovering actionable insights to **boost website engagement and subscriptions**.
+The focus is on showcasing data science skills, including data preprocessing, feature engineering, exploratory data analysis, and machine learning modeling.
 
 ## Key Highlights
 - **Data Processing:** Handling missing values, feature transformations, and encoding categorical variables.
