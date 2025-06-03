@@ -1,22 +1,25 @@
 # Recipe Popularity Prediction
 
-## Overview
-This project explores the factors that drive recipe popularity on a website and aims to build a model that predicts whether a recipe will attract high or low traffic. The goal is to achieve at least **80% precision** in predicting recipe popularity while uncovering actionable insights to **boost website engagement and subscriptions**.
-The focus is on showcasing data science skills, including data preprocessing, feature engineering, exploratory data analysis, and machine learning modeling.
+## Background  
+Tasty Bytes, an online recipe startup, features new recipes daily on their homepage. Popular recipes can boost site traffic by up to 40%, but predicting which recipes will become popular beforehand is challenging. Recipes are labeled popular based on a high engagement score.
 
-## Key Highlights
-- **Data Processing:** Handling missing values, feature transformations, and encoding categorical variables.
-- **Exploratory Data Analysis (EDA):** Identifying key trends and relationships in the dataset.
-- **Feature Engineering:** Creating meaningful features to improve model performance.
-- **Modeling:** Training and evaluating machine learning models to predict recipe popularity.
-- **Insights & Interpretation:** Presenting findings to extract meaningful business insights.
+## Overview  
+This project aims to predict recipe popularity using machine learning, focusing on identifying unpopular recipes with at least 75% accuracy to help the startup optimize featured content. The approach includes data cleaning, exploratory analysis, feature engineering, and comparing models to maximize precision.
 
-## Purpose
-This notebook is structured to demonstrate expertise in data science workflows rather than being a fully runnable, beginner-friendly guide. It emphasizes skills over reusability.
+## Key Highlights  
+- **Data Processing**: Addressed missing values and encoded categorical variables.  
+- **EDA**: Analyzed trends and variable relationships.  
+- **Feature Engineering**: Created relevant features to boost model performance.  
+- **Modeling**: Evaluated two models for precision:  
+  - Logistic Regression: **0.8977**  
+  - Random Forest: **0.7925**  
 
-## Skills Demonstrated
-- Data wrangling & preprocessing
-- Exploratory data analysis
-- Feature engineering
-- Machine learning model development
-- Performance evaluation & insights generation
+## Purpose  
+The notebook is structured to showcase end-to-end data science skills, not for reuse by beginners.
+
+## Skills Demonstrated  
+- Data wrangling  
+- Exploratory data analysis  
+- Feature engineering  
+- Model development  
+- Performance evaluation
