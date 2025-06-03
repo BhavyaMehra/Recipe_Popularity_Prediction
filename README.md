@@ -4,7 +4,7 @@
 Tasty Bytes, an online recipe startup, features new recipes daily on their homepage. Popular recipes can boost site traffic by up to 40%, but predicting which recipes will become popular beforehand is challenging. Recipes are labeled popular based on a high engagement score.
 
 ## Overview  
-This project aims to predict recipe popularity using machine learning, focusing on identifying unpopular recipes with at least 75% accuracy to help the startup optimize featured content. The approach includes data cleaning, exploratory analysis, feature engineering, and comparing models to maximize precision.
+This project is part of Data Scientist Certification @ DataCamp. It aims to predict recipe popularity using machine learning, focusing on identifying unpopular recipes with at least 75% accuracy to help the startup optimize featured content. The approach includes data cleaning, exploratory analysis, feature engineering, and comparing models to maximize precision.
 
 ## Metric Choice  
 We predict if a recipe will be popular (high traffic) or not.  
