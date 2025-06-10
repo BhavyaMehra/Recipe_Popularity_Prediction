@@ -1,0 +1,7 @@
+[theme]
+base = "light"
+primaryColor = "#0e76a8"  # A calm blue (LinkedIn blue)
+backgroundColor = "#fdfdfd"  # Softer white
+secondaryBackgroundColor = "#e9f0f5"  # Very light blue-gray
+textColor = "#1c1c1c"  # Dark gray instead of pure black
+font = "sans serif"
