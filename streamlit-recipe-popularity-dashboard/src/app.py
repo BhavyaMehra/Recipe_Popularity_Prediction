@@ -5,7 +5,6 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
 st.set_page_config(page_title="Recipe Popularity Dashboard", layout="wide")
 
