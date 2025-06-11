@@ -11,7 +11,7 @@ st.set_page_config(page_title="Recipe Popularity Dashboard", layout="wide")
 # --- Project Introduction ---
 st.markdown(
     """
-    <h1 style='text-align: center; margin-bottom: 0.3em;'>Recipe Popularity Dashboard</h1>
+    <h1 style='text-align: center; margin-bottom: 0.3em;'>Recipe Popularity Prediction Dashboard</h1>
     <div style='text-align: center; font-size: 1.1em; max-width: 900px; margin: 0 auto 1.5em auto;'>
         <b>What is this project?</b><br>
         Tasty Bytes delivers pre-measured ingredients alongside recipes to customers' doors. We analyzed ~1000 recipes to transform their homepage from random recipe selection to data-driven recommendations.<br><br>
