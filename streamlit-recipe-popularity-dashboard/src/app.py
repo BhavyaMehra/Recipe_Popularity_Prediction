@@ -81,9 +81,8 @@ with col4:
     for i, feature in enumerate(numeric_features):
         ax = axs_box[i//2, i%2]
         sns.boxplot(
-            data=df,
-            x='high_traffic',
-            y=feature,
+            x=df['high_traffic'],
+            y=df[feature],
             ax=ax
         )
         ax.set_title(f"{feature.title()} by Traffic Level")
