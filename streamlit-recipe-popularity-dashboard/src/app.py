@@ -44,9 +44,7 @@ with col1:
     traffic_counts = df['high_traffic'].value_counts()
     fig_pie = px.pie(
         names=traffic_counts.index,
-        values=traffic_counts.values,
-        color=traffic_counts.index,
-        color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        values=traffic_counts.values
     )
     fig_pie.update_traces(textinfo='percent+label')
     fig_pie.update_layout(legend_title_text='Traffic Level', legend=dict(itemsizing='constant'))
