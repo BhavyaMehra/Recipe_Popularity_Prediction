@@ -37,19 +37,23 @@ df['high_traffic'] = df['high_traffic'].map({1: 'High', 0: 'Low'})
 df['high_traffic'] = pd.Categorical(df['high_traffic'], categories=['High', 'Low'], ordered=True)
 
 # --- Overall Traffic Distribution (FIRST VISUAL) ---
-
 col1, col2 = st.columns(2)
 with col1:
     st.header("Overall Recipe Traffic Distribution")
-    traffic_counts = df['high_traffic'].value_counts()
-    fig_pie = px.pie(
-        names=traffic_counts.index,
-        values=traffic_counts.values,
-        color_discrete_sequence=px.colors.sequential.RdBu
-    )
-    fig_pie.update_traces(textinfo='percent+label')
-    fig_pie.update_layout(legend_title_text='Traffic Level', legend=dict(itemsizing='constant'))
-    st.plotly_chart(fig_pie, use_container_width=True)
+    # Ensure both categories are present for pie chart and handle NaN
+    traffic_counts = df['high_traffic'].value_counts(dropna=False).reindex(['High', 'Low'], fill_value=0)
+    if (traffic_counts > 0).sum() < 2:
+        st.warning("Not enough data to display a pie chart (only one traffic level present or missing values detected).")
+    else:
+        fig_pie = px.pie(
+            names=traffic_counts.index.astype(str),
+            values=traffic_counts.values,
+            color=traffic_counts.index.astype(str),
+            color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        )
+        fig_pie.update_traces(textinfo='percent+label')
+        fig_pie.update_layout(legend_title_text='Traffic Level', legend=dict(itemsizing='constant'))
+        st.plotly_chart(fig_pie, use_container_width=True)
 with col2:
     st.header("Data Cleaning & Feature Engineering")
     st.markdown("""
@@ -79,26 +83,37 @@ st.pyplot(fig)
 col5, col6 = st.columns(2)
 with col5:
     st.header("Recipe Categories by Traffic Level")
-    fig_category = px.histogram(
-        df,
-        x='category',
-        color='high_traffic',
-        barmode='group',
-        category_orders={"high_traffic": ["High", "Low"]}
-    )
-    fig_category.update_layout(xaxis_title="Recipe Category", yaxis_title="Count of Recipes", legend_title_text='Traffic Level')
-    st.plotly_chart(fig_category, use_container_width=True)
+    # Drop NaN in high_traffic for grouped histogram
+    df_cat = df.dropna(subset=['high_traffic'])
+    if df_cat['high_traffic'].nunique() < 2:
+        st.warning("Not enough data to show bifurcation by traffic level.")
+    else:
+        fig_category = px.histogram(
+            df_cat,
+            x='category',
+            color='high_traffic',
+            barmode='group',
+            category_orders={"high_traffic": ["High", "Low"]},
+            color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        )
+        fig_category.update_layout(xaxis_title="Recipe Category", yaxis_title="Count of Recipes", legend_title_text='Traffic Level')
+        st.plotly_chart(fig_category, use_container_width=True)
 with col6:
     st.header("Serving Size Distribution by Traffic Level")
-    fig_servings = px.histogram(
-        df,
-        x="servings",
-        color="high_traffic",
-        barmode="group",
-        category_orders={"high_traffic": ["High", "Low"]}
-    )
-    fig_servings.update_layout(xaxis_title="Servings", yaxis_title="Count", legend_title_text='Traffic Level')
-    st.plotly_chart(fig_servings, use_container_width=True)
+    df_serv = df.dropna(subset=['high_traffic'])
+    if df_serv['high_traffic'].nunique() < 2:
+        st.warning("Not enough data to show bifurcation by traffic level.")
+    else:
+        fig_servings = px.histogram(
+            df_serv,
+            x="servings",
+            color="high_traffic",
+            barmode="group",
+            category_orders={"high_traffic": ["High", "Low"]},
+            color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        )
+        fig_servings.update_layout(xaxis_title="Servings", yaxis_title="Count", legend_title_text='Traffic Level')
+        st.plotly_chart(fig_servings, use_container_width=True)
     
 
 # --- Statistical Analysis Table (placeholder, to be filled manually) ---
