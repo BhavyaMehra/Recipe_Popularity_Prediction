@@ -78,15 +78,13 @@ with col3:
     st.pyplot(fig)
 with col4:
     fig_box, axs_box = plt.subplots(2, 2, figsize=(12, 8))
-    palette_dict = {"High": "#636EFA", "Low": "#EF553B"}
     for i, feature in enumerate(numeric_features):
         ax = axs_box[i//2, i%2]
         sns.boxplot(
             data=df,
             x='high_traffic',
             y=feature,
-            ax=ax,
-            palette=palette_dict
+            ax=ax
         )
         ax.set_title(f"{feature.title()} by Traffic Level")
         ax.set_xlabel('Traffic Level')
