@@ -80,8 +80,12 @@ with col4:
     fig_box, axs_box = plt.subplots(2, 2, figsize=(12, 8))
     for i, feature in enumerate(numeric_features):
         ax = axs_box[i//2, i%2]
-        # Use color list instead of dict to avoid KeyError
-        sns.boxplot(x=df['high_traffic'], y=df[feature], ax=ax, palette=['#636EFA', '#EF553B'])
+        sns.boxplot(
+            data=df,
+            x='high_traffic',
+            y=feature,
+            ax=ax
+        )
         ax.set_title(f"{feature.title()} by Traffic Level")
         ax.set_xlabel('Traffic Level')
     plt.tight_layout()
@@ -97,8 +101,7 @@ with col5:
         x='category',
         color='high_traffic',
         barmode='group',
-        category_orders={"high_traffic": ["High", "Low"]},
-        color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        category_orders={"high_traffic": ["High", "Low"]}
     )
     fig_category.update_layout(xaxis_title="Recipe Category", yaxis_title="Count of Recipes", legend_title_text='Traffic Level')
     st.plotly_chart(fig_category, use_container_width=True)
@@ -109,8 +112,7 @@ with col6:
         x="servings",
         color="high_traffic",
         barmode="group",
-        category_orders={"high_traffic": ["High", "Low"]},
-        color_discrete_map={"High": "#636EFA", "Low": "#EF553B"}
+        category_orders={"high_traffic": ["High", "Low"]}
     )
     fig_servings.update_layout(xaxis_title="Servings", yaxis_title="Count", legend_title_text='Traffic Level')
     st.plotly_chart(fig_servings, use_container_width=True)
@@ -171,7 +173,6 @@ with col11:
     fig_prec.add_trace(go.Bar(
         x=models,
         y=precisions,
-        marker_color=['#636EFA', '#EF553B'],
         width=0.3,  # Leaner bars
         text=[f"{p:.2f}" for p in precisions],
         textposition='outside',
@@ -199,7 +200,7 @@ with col13:
     features = ["Category Vegetable", "Category Potato", "Category Pork", "Category One Dish Meal", "Category Meat"]
     importance = [3.53, 2.88, 2.55, 1.55, 1.52]
     fig_feat = go.Figure(data=[
-        go.Bar(x=features, y=importance, marker_color='#636EFA',
+        go.Bar(x=features, y=importance,
                text=[f"{v:.2f}" for v in importance], textposition='outside', width=0.5)
     ])
     fig_feat.update_layout(xaxis_title="Feature", yaxis_title="Importance")
