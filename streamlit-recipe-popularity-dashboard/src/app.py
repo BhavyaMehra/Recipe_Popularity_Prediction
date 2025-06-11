@@ -81,7 +81,7 @@ with col4:
     for i, feature in enumerate(numeric_features):
         ax = axs_box[i//2, i%2]
         # Use color list instead of dict to avoid KeyError
-        sns.boxplot(x=df['high_traffic'], y=df[feature], ax=ax, palette=['#636EFA', '#EF553B'])
+        sns.boxplot(x=df['high_traffic'], y=df[feature], ax=ax, palette=['#636EFA', '#EF553B'], hue='high_traffic')
         ax.set_title(f"{feature.title()} by Traffic Level")
         ax.set_xlabel('Traffic Level')
     plt.tight_layout()
