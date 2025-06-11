@@ -86,6 +86,7 @@ with col4:
                     y=feature, 
                     ax=ax, 
                     palette=['#636EFA', '#EF553B']
+                   )
         ax.set_title(f"{feature.title()} by Traffic Level")
         ax.set_xlabel('Traffic Level')
     plt.tight_layout()
