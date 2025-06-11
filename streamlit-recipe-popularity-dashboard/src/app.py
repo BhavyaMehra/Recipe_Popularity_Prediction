@@ -64,31 +64,15 @@ with col2:
 
 # --- EDA: Numeric Features Distribution (all in one visual) ---
 st.header("Distribution of Numeric Features")
-col3, col4 = st.columns(2)
-with col3:
-    fig, axs = plt.subplots(2, 2, figsize=(12, 8))
-    numeric_features = ['calories', 'carbohydrate', 'sugar', 'protein']
-    for i, feature in enumerate(numeric_features):
-        ax = axs[i//2, i%2]
-        sns.histplot(df[feature], ax=ax, kde=True, color='skyblue')
-        ax.set_title(f"{feature.title()} Distribution")
-        ax.set_xlabel(feature.title())
-    plt.tight_layout()
-    st.pyplot(fig)
-with col4:
-    fig_box, axs_box = plt.subplots(2, 2, figsize=(12, 8))
-    for i, feature in enumerate(numeric_features):
-        ax = axs_box[i//2, i%2]
-        sns.boxplot(
-            data=df,
-            x='high_traffic',
-            y=feature,
-            ax=ax
-        )
-        ax.set_title(f"{feature.title()} by Traffic Level")
-        ax.set_xlabel('Traffic Level')
-    plt.tight_layout()
-    st.pyplot(fig_box)
+fig, axs = plt.subplots(2, 2, figsize=(12, 5))  # Reduced height by 33%
+numeric_features = ['calories', 'carbohydrate', 'sugar', 'protein']
+for i, feature in enumerate(numeric_features):
+    ax = axs[i//2, i%2]
+    sns.histplot(df[feature], ax=ax, kde=True, color='skyblue')
+    ax.set_title(f"{feature.title()} Distribution")
+    ax.set_xlabel(feature.title())
+plt.tight_layout()
+st.pyplot(fig)
 
 # --- Category-wise Traffic Analysis and Serving Size by Traffic ---
 
