@@ -44,7 +44,8 @@ with col1:
     traffic_counts = df['high_traffic'].value_counts()
     fig_pie = px.pie(
         names=traffic_counts.index,
-        values=traffic_counts.values
+        values=traffic_counts.values,
+        color_discrete_sequence=px.colors.sequential.RdBu
     )
     fig_pie.update_traces(textinfo='percent+label')
     fig_pie.update_layout(legend_title_text='Traffic Level', legend=dict(itemsizing='constant'))
@@ -79,8 +80,9 @@ with col4:
     for i, feature in enumerate(numeric_features):
         ax = axs_box[i//2, i%2]
         sns.boxplot(
-            x=df['high_traffic'],
-            y=df[feature],
+            data=df,
+            x='high_traffic',
+            y=feature,
             ax=ax
         )
         ax.set_title(f"{feature.title()} by Traffic Level")
